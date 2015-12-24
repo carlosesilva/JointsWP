@@ -10,8 +10,9 @@ var gulp  = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     plumber = require('gulp-plumber'),
-    bower = require('gulp-bower')
-    
+    bower = require('gulp-bower'),
+    browserSync = require('browser-sync').create();
+
 // Compile Sass, Autoprefix and minify
 gulp.task('styles', function() {
   return gulp.src('./assets/scss/**/*.scss')
@@ -24,7 +25,8 @@ gulp.task('styles', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-    .pipe(gulp.dest('./assets/css/'))     
+    .pipe(gulp.dest('./assets/css/'))
+    .pipe(browserSync.stream()) // inject styles into browser with brosersync
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
     .pipe(gulp.dest('./assets/css/'))
@@ -90,21 +92,29 @@ gulp.task('bower', function() {
     .pipe(gulp.dest('vendor/'))
 });    
 
-// Create a default task 
-gulp.task('default', function() {
-  gulp.start('styles', 'site-js', 'foundation-js');
-});
+// Create a server task for browsersync
+gulp.task('browser-sync', function() {
+  browserSync.init({
+    proxy: "mcboilerplate-wp.dev",
+    xip: true
+  });
 
-// Watch files for changes
-gulp.task('watch', function() {
 
   // Watch .scss files
   gulp.watch('./assets/scss/**/*.scss', ['styles']);
 
   // Watch site-js files
   gulp.watch('./assets/js/scripts/*.js', ['site-js']);
-  
-  // Watch foundation-js files
-  gulp.watch('./vendor/foundation-sites/js/*.js', ['foundation-js']);
 
+  // Reload browser on any changes made to php or js files
+  gulp.watch(["./*.php", "./parts/*.php", "./assets/js/*.js"]).on('change', browserSync.reload);
+});
+
+
+// Default task
+gulp.task('default', ['browser-sync']);
+
+// Build task
+gulp.task('build', function() {
+  gulp.start('styles', 'site-js', 'foundation-js');
 });
