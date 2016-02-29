@@ -149,7 +149,7 @@ gulp.task('build', function() {
   gulp.start('styles', 'site-js', 'foundation-js');
 });
 
-// Run styles, site-js and foundation-js
+// Set default task
 gulp.task('default', function() {
   gulp.start('browsersync');
 });
