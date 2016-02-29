@@ -107,7 +107,7 @@ gulp.task('browser-sync', function() {
   gulp.watch('./assets/js/scripts/*.js', ['site-js']);
 
   // Reload browser on any changes made to php or js files
-  gulp.watch(["./*.php", "./parts/*.php", "./assets/js/*.js"]).on('change', browserSync.reload);
+  gulp.watch(["./*.php", "./parts/*.php", "./assets/js/*.js", "../../plugins/miranda-creative/**/*"]).on('change', browserSync.reload);
 });
 
 
