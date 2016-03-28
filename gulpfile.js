@@ -13,6 +13,7 @@ var gulp  = require('gulp'),
     plumber = require('gulp-plumber'),
     bower = require('gulp-bower'),
     babel = require('gulp-babel'),
+    opn = require('opn'),
     browserSync = require('browser-sync').create();
 
 // Compile Sass, Autoprefix and minify
@@ -117,6 +118,9 @@ gulp.task('browsersync', function() {
       'assets/images/**/*.{png,jpg,gif,svg,webp}',
       '../../plugins/miranda-creative/**/*'
     ];
+
+    // Open wp-admin
+    opn('http://mcboilerplate-wp.dev/wp-admin/');
 
     browserSync.init(files, {
       // Replace with URL of your local site
