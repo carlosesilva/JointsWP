@@ -113,6 +113,11 @@ POSTS & CONTENT STYLES
 .archive-title {
 
 }
+.article-header{
+	h1 {
+		@extend h2;
+	}
+}
 
 // Post meta  
 .byline {
@@ -473,6 +478,7 @@ SIDEBARS & ASIDES
 }
 
 .widgettitle {
+	@extend h4;
 }
 
 .widget {

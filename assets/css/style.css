@@ -1766,8 +1766,10 @@ ol,
 li,
 h1,
 h2,
+.article-header h1,
 h3,
 h4,
+.widgettitle,
 h5,
 h6,
 pre,
@@ -1801,8 +1803,10 @@ small {
 
 h1,
 h2,
+.article-header h1,
 h3,
 h4,
+.widgettitle,
 h5,
 h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -1814,9 +1818,9 @@ h6 {
   margin-bottom: 0.5rem;
   line-height: 1.4; }
   h1 small,
-  h2 small,
+  h2 small, .article-header h1 small,
   h3 small,
-  h4 small,
+  h4 small, .widgettitle small,
   h5 small,
   h6 small {
     color: #cacaca;
@@ -1825,13 +1829,13 @@ h6 {
 h1 {
   font-size: 1.5rem; }
 
-h2 {
+h2, .article-header h1 {
   font-size: 1.25rem; }
 
 h3 {
   font-size: 1.1875rem; }
 
-h4 {
+h4, .widgettitle {
   font-size: 1.125rem; }
 
 h5 {
@@ -1843,11 +1847,11 @@ h6 {
 @media screen and (min-width: 40em) {
   h1 {
     font-size: 3rem; }
-  h2 {
+  h2, .article-header h1 {
     font-size: 2.5rem; }
   h3 {
     font-size: 1.9375rem; }
-  h4 {
+  h4, .widgettitle {
     font-size: 1.5625rem; }
   h5 {
     font-size: 1.25rem; }
@@ -2040,10 +2044,11 @@ kbd {
     margin: 0.5cm; }
   p,
   h2,
+  .article-header h1,
   h3 {
     orphans: 3;
     widows: 3; }
-  h2,
+  h2, .article-header h1,
   h3 {
     page-break-after: avoid; } }
 
@@ -4151,7 +4156,7 @@ a:link, a:visited:link {
 /*********************
 H1, H2, H3, H4, H5 P STYLES
 *********************/
-h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
+h1 a, .h1 a, h2 a, .article-header h1 a, .h2 a, h3 a, .h3 a, h4 a, .widgettitle a, .h4 a, h5 a, .h5 a {
   text-decoration: none; }
 
 /*********************
@@ -4449,10 +4454,10 @@ to display none.
     max-width: 100% !important; }
   @page {
     margin: 0.5cm; }
-  p, h2, h3 {
+  p, h2, .article-header h1, h3 {
     orphans: 3;
     widows: 3; }
-  h2,
+  h2, .article-header h1,
   h3 {
     page-break-after: avoid; }
   .sidebar,
